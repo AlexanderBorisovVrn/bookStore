@@ -1,11 +1,14 @@
 import React from 'react';
-// import error from 'https://creativemarket.com/eucalyp';
+import './error-indicator.css';
+import errorImg from './browser.svg';
 
-const ErrorIndicator = ()=>{
-  <div className='error'>
-    {error}
-    <p>Sorry,somthing was terribly wrong</p>
-  </div>
+const ErrorIndicator = () => {
+  return (
+    <div className='error'>
+      <img src={errorImg} width='100px' height='100px'/>
+      <p>Sorry,something was terribly wrong</p>
+    </div>
+  )
 }
 
 export default ErrorIndicator;
