@@ -1,0 +1,13 @@
+.error {
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.error>p {
+  font-size: 2rem;
+  color: rgba(8, 8, 8, 0.801);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}

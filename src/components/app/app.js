@@ -1,7 +1,12 @@
 import React from 'react';
+import ErrorIndicator from '../error-indicator/'
 
 const App = () => {
-  return <p>Hello World!</p>
+  return (
+    <div className='app'>
+      <ErrorIndicator/>
+    </div>
+  )
 }
 
 export default App
