@@ -1,2 +1,2 @@
-import MyContext from './book-store-context';
-export default MyContext;
+import {BookStoreProvider, BookStoreConsumer} from './book-store-context';
+export {BookStoreProvider, BookStoreConsumer};

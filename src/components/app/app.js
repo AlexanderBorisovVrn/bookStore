@@ -1,14 +1,14 @@
 import React from 'react';
 import ErrorIndicator from '../error-indicator/';
-import MyContext from '../bookStore-context'
+import {BookStoreProvider} from '../bookStore-context/'
 
 const App = () => {
    return (
-    <MyContext.Provider value='78'>
+    <BookStoreProvider value='71'>
       <div className='app'>
         <ErrorIndicator/>
       </div>
-    </MyContext.Provider>
+    </BookStoreProvider>
   )
   
 }
