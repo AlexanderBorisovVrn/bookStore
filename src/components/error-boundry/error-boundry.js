@@ -5,10 +5,6 @@ export default class ErrorBoundry extends Component {
   state = {
     error: false
   }
-  constructor(props) {
-    super();
-    
-  }
   componentDidCatch() {
     this.setState({erorr: true})
   }

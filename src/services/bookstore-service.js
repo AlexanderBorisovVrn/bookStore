@@ -1,6 +1,5 @@
-
-export default class BookstoreService{
-  getBooks =()=>{
+export default class BookStoreService {
+  getBooks = () => {
     return [];
   }
 }
