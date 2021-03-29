@@ -4,19 +4,16 @@ import {withBookstoreServiceContext} from '../hoc';
 import {HomePage, CartPage} from '../pages';
 
 import {Route, Switch} from 'react-router';
-import BookList from '../book-list/book-list';
+
 const App = () => {
   return (
     <div className='app'>
-      <BookList/>
-      {/* <Switch>
+      <Switch>
         <Route path='/' component={HomePage} exact/>
         <Route path='/cart' component={CartPage}/>
-      </Switch> */}
-
+      </Switch>
     </div>
   )
-
 }
 
 export default withBookstoreServiceContext(App)

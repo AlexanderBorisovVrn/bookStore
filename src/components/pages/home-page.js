@@ -1,9 +1,10 @@
 import React from 'react';
+import BookList from '../book-list/book-list';
 
 const HomePage = ()=>{
   return (
     <section className='home-page'>
-      <p>This is home page</p>
+      <BookList/>
     </section>
   )
 }
