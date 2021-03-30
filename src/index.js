@@ -9,7 +9,7 @@ import {BookStoreProvider} from './components/bookStore-context';
 import store from './store'
 import BookStoreService from './services/bookstore-service';
 
-let bookStoreService = new BookStoreService();
+const bookStoreService = new BookStoreService();
 
 ReactDOM.render(
   <Provider store={store}>

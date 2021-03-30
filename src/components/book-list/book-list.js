@@ -1,19 +1,14 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import BookListItem from '../book-list-item';
 import PropTypes from 'prop-types'
+import {connect} from 'react-redux';
+import {withBookstoreServiceContext} from '../hoc';
 
-const BookList = ({books}) => {
-  books = [
-    {
-      id: '1',
-      title: 'rtue',
-      author: 'James La Brie'
-    }, {
-      id: '2',
-      title: 'one book about propgramming',
-      author: 'Frank Sinatra'
-    }
-  ]
+const BookList = ({books, bookstoreService}) => {
+  useEffect(() => {
+    console.log(bookstoreService.getBooks());
+  }, [bookstoreService]);
+  
   return (
     <ul>
       {books.map(book => {
@@ -26,8 +21,12 @@ const BookList = ({books}) => {
   )
 }
 
+const mapStateToProps = ({books}) => {
+  return {books}
+}
+
 BookList.propTypes = {
   book: PropTypes.array
 }
 
-export default BookList;
+export default withBookstoreServiceContext(connect(mapStateToProps)(BookList));

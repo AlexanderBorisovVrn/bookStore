@@ -4,8 +4,8 @@ import {BookStoreConsumer} from '../bookStore-context/'
 const withBookstoreServiceContext = (Wrapped) => {
   return (props) => {
     return <BookStoreConsumer>
-      {(bookstoreServiceContext) => {
-        return <Wrapped {...props} bookstoreServiceContext={bookstoreServiceContext}/>
+      {(bookstoreService) => {
+        return <Wrapped {...props} bookstoreService={bookstoreService}/>
       }
 }
     </BookStoreConsumer>
