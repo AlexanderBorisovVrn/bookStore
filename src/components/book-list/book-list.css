@@ -1,0 +1,12 @@
+ul{
+  list-style: none;
+}
+
+.book-list{
+  width: 100%;
+  padding: 0;
+  background-color: blue;
+  display: grid;
+  grid-template-columns: repeat(6,300px);
+  grid-template-rows: repeat(6,400px);
+}

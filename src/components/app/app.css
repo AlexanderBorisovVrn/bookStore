@@ -1,6 +1,7 @@
 .app {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   width: auto;
   height: 100vh;
   padding: 0 2rem;

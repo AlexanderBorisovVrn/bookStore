@@ -1,0 +1,12 @@
+.book-list-item {
+border: 1px solid black;
+height: 100%;
+}
+
+.book-list-item__img {}
+
+.about {}
+
+.about__title {}
+
+.about__authors {}

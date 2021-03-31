@@ -3,16 +3,17 @@ import BookListItem from '../book-list-item';
 import {connect} from 'react-redux';
 import {booksLoaded} from '../../actions/actions'
 import {withBookstoreServiceContext} from '../hoc';
+import './book-list.css'
 
-const BookList = ({books, bookstoreService,booksLoaded}) => {
+const BookList = ({books, bookstoreService, booksLoaded}) => {
 
   useEffect(() => {
- const data= bookstoreService.getBooks();
- booksLoaded(data)
-  }, [bookstoreService,booksLoaded]);
+    const data = bookstoreService.getBooks();
+    booksLoaded(data)
+  }, [bookstoreService, booksLoaded]);
 
   return (
-    <ul>
+    <ul className='book-list'>
       {books.map(book => {
         return <li key={book.id}>
           <BookListItem book={book}/>
@@ -27,9 +28,8 @@ const mapStateToProps = ({books}) => {
   return {books}
 }
 
-const mapDispatchToProps={
-   booksLoaded
+const mapDispatchToProps = {
+  booksLoaded
 }
 
-
-export default withBookstoreServiceContext(connect(mapStateToProps,mapDispatchToProps)(BookList));
+export default withBookstoreServiceContext(connect(mapStateToProps, mapDispatchToProps)(BookList));
