@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Train+One&display=swap');
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 4rem;
+  width: 100%;
+}
+
+.logo {
+  font-size: 2rem;
+  font-family: 'Train One', cursive;
+}

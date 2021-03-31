@@ -1,12 +1,50 @@
-.book-list-item {
-border: 1px solid black;
-height: 100%;
+@import url('https://fonts.googleapis.com/css2?family=Recursive&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+}
+button{
+  cursor: pointer;
+  text-decoration: none;
+  background-color:inherit ;
+  border: none;
+  outline: none;
+ color: rgb(116, 55, 214);
+}
+button:active{
+  color: blue;
 }
 
-.book-list-item__img {}
+.book-list-item {
+  border: 1px solid skyblue;
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+  border-radius: 0.25rem;
+  font-family: 'Recursive', sans-serif;
+}
+.book-list-item:hover{
+  background-color: rgba(112, 128, 144, 0.123);
+}
 
-.about {}
+.book-list-item__img {
+  width: 100%;
+  height: 10rem;
+  background-color: rgba(128, 128, 128, 0.089);
+}
 
-.about__title {}
+.about {
+  margin: 0;
+  padding: 0px;
+}
 
-.about__authors {}
+.about__title {
+  height: 3.5rem;
+  margin: 5px 0;
+  font-size: 1.25rem;
+}
+
+ .about__authors>button {
+  font-size: 0.75rem;
+  color: black;
+  }

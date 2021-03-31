@@ -1,8 +1,22 @@
+* {
+  margin: 0;
+  padding: 0px;
+}
+
+ul {
+  list-style: none;
+}
+
 .app {
   display: flex;
   flex-wrap: wrap;
+  margin: 0;
+  padding: 0px;
   justify-content: center;
-  width: auto;
-  height: 100vh;
-  padding: 0 2rem;
+  width: 100%;
+}
+.container{
+  margin: 0;
+  padding: 0px;
+  width: 1200px;
 }
