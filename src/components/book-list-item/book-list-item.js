@@ -4,11 +4,12 @@ import './book-list-item.css'
 const BookListItem = ({book}) => {
   const {authors, title, img, cost} = book;
   const displayAuthors = (authors) => {
+    let keyForAuthor = 9000;
     return authors.map(author => {
-      return <p>{author}</p>
+      ++keyForAuthor;
+      return <p key={keyForAuthor}>{author}</p>
     })
   }
-  console.log(displayAuthors(authors));
   return (
     <div className='book-list-item'>
       <img className='book-list-item__img' alt='' src={img}/>
@@ -22,7 +23,7 @@ const BookListItem = ({book}) => {
         <div className='about__cost'>
           <span>{`$${cost}`}</span>
         </div>
-        <button className='btn'>Add to cart</button>
+        <button type='button' className='btn'>Add to cart</button>
       </div>
     </div>
   )

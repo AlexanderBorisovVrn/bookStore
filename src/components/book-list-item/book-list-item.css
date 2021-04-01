@@ -5,25 +5,16 @@ p {
   margin: 0;
   padding: 0;
 }
-
-button {
-  cursor: pointer;
-  text-decoration: none;
-  background-color: inherit;
-  border: none;
-  outline: none;
-  text-align: left;
-  color: rgb(47, 155, 218);
+button{
+  border-radius: 0.25rem;
+  height: 2rem;
 }
 
-button:active {
-  color: rgba(17, 17, 212, 0.602);
-}
 
 .book-list-item {
   display: flex;
   border: 2px solid rgba(135, 207, 235, 0.37);
-  width: 100%;
+  width: auto;
   height: 100%;
   padding: 5px;
   border-radius: 0.25rem;
@@ -48,8 +39,24 @@ button:active {
   padding: 0px;
   margin-left: 1rem;
 }
-.about>li{
+
+.about>li {
   width: 100%;
+}
+
+.about__title {
+  cursor: pointer;
+  text-decoration: none;
+  background-color: inherit;
+  border: none;
+  font-size: 1.5rem;
+  text-align: left;
+  color: rgb(47, 155, 218);
+}
+.about__title:active,
+.about__title:focus{
+  border: none;
+  outline: none;
 }
 
 .about__authors {
@@ -59,20 +66,29 @@ button:active {
   color: black;
 }
 
-.about__cost{
+.about__cost {
   font-size: 1.5rem;
   margin-top: 1rem;
 }
-.btn{
+
+.btn {
   display: flex;
-  background-color: seagreen;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(2, 128, 57);
   width: 70%;
-   margin: 1rem 0;
-   color: aliceblue;
+  margin-top: 0.5rem;
+}
+
+.btn,
+.btn:focus,
+.btn:active,
+.btn:hover {
+  border: none;
+  color: aliceblue;
+  outline: none;
 }
 .btn:active{
-  color: aliceblue;
-}
-.btn:hover{
-  color: aliceblue;
+  background-color: seagreen;
+
 }

@@ -15,7 +15,16 @@ header {
 }
 
 .cart {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   color: rgba(0, 0, 0, 0.849);
   font-size: 1.25rem;
   font-family: 'Yatra One', cursive;
+}
+.cart__items{
+  margin-left: 0.5rem;
+}
+.fas {
+  color:rgba(0, 128, 0, 0.534);
 }
