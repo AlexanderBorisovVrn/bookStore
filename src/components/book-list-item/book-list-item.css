@@ -5,24 +5,20 @@ p {
   margin: 0;
   padding: 0;
 }
-button{
+
+button {
   border-radius: 0.25rem;
-  height: 2rem;
+
 }
 
 
 .book-list-item {
   display: flex;
-  border: 2px solid rgba(135, 207, 235, 0.37);
   width: auto;
   height: 100%;
   padding: 5px;
   border-radius: 0.25rem;
   font-family: 'Recursive', sans-serif;
-}
-
-.book-list-item:hover {
-  background-color: rgba(112, 128, 144, 0.123);
 }
 
 .book-list-item__img {
@@ -41,33 +37,37 @@ button{
 }
 
 .about>li {
-  width: 100%;
+  width: auto;
 }
 
 .about__title {
+  display: flex;
   cursor: pointer;
   text-decoration: none;
   background-color: inherit;
   border: none;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 500;
   text-align: left;
-  color: rgb(47, 155, 218);
-}
-.about__title:active,
-.about__title:focus{
   border: none;
   outline: none;
+}
+
+
+.about__title:hover {
+color: rgb(2, 128, 57);
 }
 
 .about__authors {
   height: 2rem;
   padding: 5px 0;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: black;
 }
 
 .about__cost {
   font-size: 1.5rem;
+  font-weight: 700;
   margin-top: 1rem;
 }
 
@@ -75,9 +75,13 @@ button{
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 0.5rem;
+  height: 2rem;
   background-color: rgb(2, 128, 57);
   width: 70%;
-  margin-top: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 .btn,
@@ -88,7 +92,8 @@ button{
   color: aliceblue;
   outline: none;
 }
-.btn:active{
+
+.btn:active {
   background-color: seagreen;
 
 }

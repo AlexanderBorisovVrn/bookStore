@@ -3,7 +3,7 @@ export default class BookStoreService {
   getBooks = () => {
     return [
       {
-        "title": "The Google story",
+        "title": "The Google story of the 2 tower",
         "authors": [
           "David A. Vise", "Mark Malseed"
         ],
