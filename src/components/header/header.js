@@ -1,19 +1,20 @@
 import React from 'react';
 import './header.css';
+import {Link} from 'react-router-dom'
 
 const Header = ({items, cost}) => {
 
   return (
-    <header>
+    <Link to='/' className='header'>
       <div className='logo'>
         BookStore
       </div>
-      <div className='cart'>
+      <Link to='/cart' className='cart'>
         <i className="fas fa-shopping-cart"></i>
         <span className='cart__items'>{`${items} items`}</span>
         <span className='cart__cost'>{`($${cost})`}</span>
-      </div>
-    </header>
+      </Link>
+    </Link>
   )
 }
 

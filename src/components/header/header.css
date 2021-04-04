@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Train+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Yatra+One&display=swap');
 
-header {
+a{
+  text-decoration: none;
+}
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
