@@ -4,6 +4,7 @@
 a{
   text-decoration: none;
 }
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -14,6 +15,7 @@ a{
 }
 
 .logo {
+  color:black;
   font-size: 2rem;
   font-family: 'Train One', cursive;
 }

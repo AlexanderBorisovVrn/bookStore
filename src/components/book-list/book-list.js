@@ -1,14 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import BookListItem from '../book-list-item';
 import {connect} from 'react-redux';
-import {booksLoaded} from '../../actions/actions'
+import compose from '../../utils'
+import {booksLoaded, booksRequested} from '../../actions/actions'
 import {withBookstoreServiceContext} from '../hoc';
 import Spinner from '../spinner'
 import './book-list.css'
 
-const BookList = ({books, loading, bookstoreService, booksLoaded}) => {
+const BookList = ({books, loading, bookstoreService, booksLoaded, booksRequested}) => {
 
   useEffect(() => {
+    booksRequested();
     bookstoreService
       .getBooks()
       .then(data => {
@@ -34,12 +36,16 @@ const BookList = ({books, loading, bookstoreService, booksLoaded}) => {
   }
 }
 
-const mapStateToProps = ({books,loading}) => {
-  return {books,loading}
+const mapStateToProps = ({books, loading}) => {
+  return {books, loading}
 }
 
 const mapDispatchToProps = {
-  booksLoaded
+  booksLoaded,
+  booksRequested
 }
 
-export default withBookstoreServiceContext(connect(mapStateToProps, mapDispatchToProps)(BookList));
+export default compose(
+  withBookstoreServiceContext,
+   connect(mapStateToProps, mapDispatchToProps),)
+   (BookList)
