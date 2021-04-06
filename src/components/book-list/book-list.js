@@ -1,13 +1,21 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
+import ErrorBoundry from '../error-boundry'
 import BookListItem from '../book-list-item';
 import {connect} from 'react-redux';
 import compose from '../../utils'
-import {booksLoaded, booksRequested} from '../../actions/actions'
+import {booksLoaded, booksRequested, booksError} from '../../actions/actions'
 import {withBookstoreServiceContext} from '../hoc';
 import Spinner from '../spinner'
 import './book-list.css'
 
-const BookList = ({books, loading, bookstoreService, booksLoaded, booksRequested}) => {
+const BookList = ({
+  books,
+  loading,
+  bookstoreService,
+  booksLoaded,
+  booksRequested,
+  booksError
+}) => {
 
   useEffect(() => {
     booksRequested();
@@ -16,7 +24,8 @@ const BookList = ({books, loading, bookstoreService, booksLoaded, booksRequested
       .then(data => {
         booksLoaded(data)
       })
-  }, [bookstoreService, booksLoaded]);
+      .catch(err => console.log(booksError(err)))
+    }, [bookstoreService, booksLoaded, booksRequested, booksError]);
 
   if (loading) {
     return <div>
@@ -24,14 +33,17 @@ const BookList = ({books, loading, bookstoreService, booksLoaded, booksRequested
     </div>
   } else {
     return (
-      <ul className='book-list'>
-        {books.map(book => {
-          return <li key={book.id}>
-            <BookListItem book={book}/>
-          </li>
-        })
+      <ErrorBoundry>
+        <ul className='book-list'>
+          {books.map(book => {
+            return <li key={book.id}>
+              <BookListItem book={book}/>
+            </li>
+          })
 }
-      </ul>
+        </ul>
+      </ErrorBoundry>
+
     )
   }
 }
@@ -42,10 +54,11 @@ const mapStateToProps = ({books, loading}) => {
 
 const mapDispatchToProps = {
   booksLoaded,
-  booksRequested
+  booksRequested,
+  booksError
 }
 
-export default compose(
-  withBookstoreServiceContext,
-   connect(mapStateToProps, mapDispatchToProps),)
-   (BookList)
+export default compose
+(withBookstoreServiceContext,
+ connect(mapStateToProps, mapDispatchToProps))
+ (BookList)

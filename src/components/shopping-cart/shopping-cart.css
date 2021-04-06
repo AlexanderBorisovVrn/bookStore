@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Overpass+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rye&display=swap');
+
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+
+}
+
+caption {
+  padding: 10px 0;
+  font-family: 'Rye', cursive;
+  font-size: 2rem;
+  text-align: left;
+}
+
+thead {
+  background-color: rgba(128, 128, 128, 0.603);
+  border-top: 1px solid rgba(128, 128, 128, 0.301);
+  border-bottom: 1px solid rgba(128, 128, 128, 0.301);
+  font-size: 1.25rem;
+}
+
+th:nth-child(1),
+td:nth-child(1) {
+  padding-left: 10px;
+  width: 15%;
+}
+
+th:nth-child(2) {
+  width: 35%;
+}
+
+th:nth-child(3) {
+  width: 15%;
+}
+
+th:nth-child(4) {
+  width: 15%;
+}
+
+th:nth-child(5) {
+  width: 20%;
+}
+
+
+th,
+td {
+  font-family: 'Overpass Mono', monospace;
+  text-align: left;
+  padding: 20px 0;
+}
+
+th {
+  padding: 10px 0;
+}
+
+.remove,
+.inc,
+.dec {
+  padding: 2px 4px;
+  outline: none;
+}
+
+.remove>i {
+  color: red;
+}
+
+.inc>i {
+  color: green;
+}
+
+.dec>i {
+  color: orange;
+}
