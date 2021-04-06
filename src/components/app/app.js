@@ -1,6 +1,6 @@
 import React from 'react';
 import './app.css'
-import {HomePage, CartPage} from '../pages';
+import {HomePage} from '../pages';
 import {Route, Switch} from 'react-router';
 import Header from '../header';
 import ShoppingCart from '../shopping-cart';

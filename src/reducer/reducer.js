@@ -19,8 +19,10 @@ const reducer = (state=initialState, action) => {
         error:null
       };
     case 'BOOKS_ERROR':
-      return {
+
+      return{
         books:[],
+        loading:false,
         error:action.payload
       }
     default:

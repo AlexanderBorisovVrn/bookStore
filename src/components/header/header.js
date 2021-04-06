@@ -19,8 +19,8 @@ const Header = ({items, cost}) => {
 }
 
 Header.defaultProps = {
-  items: 5,
-  cost: 200
+  items: 0,
+  cost: 0
 }
 
 export default Header
