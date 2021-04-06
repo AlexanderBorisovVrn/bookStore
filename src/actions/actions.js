@@ -4,8 +4,12 @@ const booksLoaded = (newBook) => {
 const booksRequested=()=>{
   return{type:'BOOKS_REQUESTED'}
 }
+const booksError=(payload)=>{
+  return {type:'BOOKS_ERROR'}
+}
 
 export {
   booksLoaded,
-  booksRequested
+  booksRequested,
+  booksError
 }

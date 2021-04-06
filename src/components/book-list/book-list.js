@@ -1,51 +1,57 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import BookListItem from '../book-list-item';
 import {connect} from 'react-redux';
-import compose from '../../utils'
-import {booksLoaded, booksRequested} from '../../actions/actions'
+import compose from '../../utils';
+import ErrorIndicator from '../error-indicator';
+import {booksLoaded, booksRequested, booksError} from '../../actions/actions'
 import {withBookstoreServiceContext} from '../hoc';
 import Spinner from '../spinner'
 import './book-list.css'
 
-const BookList = ({books, loading, bookstoreService, booksLoaded, booksRequested}) => {
+const BookList = ({books, loading, error, fetchBooks}) => {
 
   useEffect(() => {
-    booksRequested();
-    bookstoreService
-      .getBooks()
-      .then(data => {
-        booksLoaded(data)
-      })
-  }, [bookstoreService, booksLoaded]);
+    fetchBooks();
+  },[fetchBooks]);
 
-  if (loading) {
-    return <div>
-      <Spinner/>
-    </div>
-  } else {
-    return (
-      <ul className='book-list'>
-        {books.map(book => {
-          return <li key={book.id}>
-            <BookListItem book={book}/>
-          </li>
-        })
+  const bookList = <ul className='book-list'>
+    {books.map(book => {
+      return <li key={book.id}>
+        <BookListItem book={book}/>
+      </li>
+    })
 }
-      </ul>
-    )
+  </ul>;
+  const spinner = <div>
+    <Spinner/>
+  </div>
+
+  if (error) {
+    return <ErrorIndicator/>
+  }
+  if (!loading) {
+    return bookList
+  } else {
+    return spinner
+  }
+
+}
+
+const mapStateToProps = ({books, loading, error}) => {
+  return {books, loading, error}
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    fetchBooks: () => {
+      const {bookStoreService} = ownProps;
+      dispatch(booksRequested())
+      bookStoreService
+        .getBooks()
+        .then(data => dispatch(booksLoaded(data)))
+        .catch(err => booksError(err))
+    }
   }
 }
 
-const mapStateToProps = ({books, loading}) => {
-  return {books, loading}
-}
-
-const mapDispatchToProps = {
-  booksLoaded,
-  booksRequested
-}
-
-export default compose(
-  withBookstoreServiceContext,
-   connect(mapStateToProps, mapDispatchToProps),)
-   (BookList)
+export default compose(withBookstoreServiceContext, connect(mapStateToProps, mapDispatchToProps),)(BookList)
