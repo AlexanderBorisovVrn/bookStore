@@ -8,7 +8,8 @@ table {
 
 }
 
-caption {
+caption,
+.total-price {
   padding: 10px 0;
   font-family: 'Rye', cursive;
   font-size: 2rem;
@@ -74,3 +75,13 @@ th {
 .dec>i {
   color: orange;
 }
+
+.total-price{
+display: flex;
+width: auto;
+margin: 0;
+padding: 0;
+flex-direction: row-reverse;
+column-gap: 2rem;
+}
+

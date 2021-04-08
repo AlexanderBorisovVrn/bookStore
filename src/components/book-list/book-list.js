@@ -9,19 +9,26 @@ import {withBookstoreServiceContext} from '../hoc';
 import Spinner from '../spinner'
 import './book-list.css'
 
-const BookList = ({books, loading, error, fetchBooks}) => {
-
-  useEffect(()=>{
-    fetchBooks()
-  },[fetchBooks])
-  const bookList = <ul className='book-list'>
-    {books.map(book => {
-      return <li key={book.id}>
-        <BookListItem book={book}/>
-      </li>
-    })
+const BookList = ({books,addedToCart}) => {
+  return (
+    <ul className='book-list'>
+      {books.map(book => {
+        const {id}=book;
+             return <li key={id}>
+          <BookListItem book={book} addedToCart={()=>addedToCart(id)} />
+        </li>
+      })
 }
-  </ul>;
+    </ul>
+  )
+}
+
+const BookListContainer = ({books, loading, error, fetchBooks,addedToCart}) => {
+
+  useEffect(() => {
+    fetchBooks()
+  }, [fetchBooks])
+
   const spinner = <div>
     <Spinner/>
   </div>
@@ -30,7 +37,7 @@ const BookList = ({books, loading, error, fetchBooks}) => {
     return <ErrorIndicator/>
   }
   if (!loading) {
-    return bookList
+    return <BookList books={books} addedToCart={addedToCart} />
   } else {
     return spinner
   }
@@ -42,9 +49,12 @@ const mapStateToProps = ({books, loading, error}) => {
 }
 
 const mapDispatchToProps = (dispatch, {bookStoreService}) => {
- return {
-   fetchBooks:fetchBooks(dispatch,bookStoreService)
- }
- }
+  return {
+    fetchBooks: fetchBooks(dispatch, bookStoreService),
+    addedToCart:(id)=>console.log('Added to Cart',id)
+  }
+}
 
-export default compose(withBookstoreServiceContext, connect(mapStateToProps, mapDispatchToProps),)(BookList)
+export default compose(withBookstoreServiceContext,
+   connect(mapStateToProps, mapDispatchToProps),)
+   (BookListContainer)
