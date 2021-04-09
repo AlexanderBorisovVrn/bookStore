@@ -14,7 +14,6 @@ const App = () => {
           <Route path='/' component={HomePage} exact/>
           <Route path='/cart' component={ShoppingCart}/>
         </Switch>
-        
       </div>
     </div>
   )
