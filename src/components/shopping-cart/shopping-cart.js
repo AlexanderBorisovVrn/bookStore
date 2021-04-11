@@ -5,13 +5,13 @@ import {connect} from 'react-redux';
 const ShoppingCart = ({items, total, onIncrease, onDecrease, onDelete}) => {
   const renderItems = () => {
     return (items.map((item, idx) => {
-      const {id, name, count, total} = item;
+      const {id, title, count, total} = item;
       return (
         <tr key={id}>
-          <td>{idx+1}</td>
-          <td>{name}</td>
+          <td>{idx + 1}</td>
+          <td>{title}</td>
           <td>{count}</td>
-          <td>{total}</td>
+          <td>{`$${total}`}</td>
           <td>
             <button type='button' className='inc' onClick={() => onIncrease(id)}>
               <i className="fas fa-plus-circle"></i>
