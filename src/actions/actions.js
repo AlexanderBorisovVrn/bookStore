@@ -12,6 +12,10 @@ const addedItemToCart = (bookId)=>{
   return {type:'ADDED_ITEM_TO_CART',payload:bookId}
 }
 
+const onIncrease = (increaseId)=>{
+  return {type:'ON_INCREASE',payload:increaseId}
+}
+
 const fetchBooks = (dispatch,bookStoreService) =>{
   return ()=>{
    dispatch(booksRequested())
@@ -24,5 +28,6 @@ const fetchBooks = (dispatch,bookStoreService) =>{
 
 export {
   fetchBooks,
-  addedItemToCart
+  addedItemToCart,
+  onIncrease
 }

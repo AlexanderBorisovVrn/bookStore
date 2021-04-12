@@ -1,8 +1,9 @@
 import React from 'react';
 import './shopping-cart.css'
 import {connect} from 'react-redux';
+import {onIncrease} from '../../actions/actions'
 
-const ShoppingCart = ({items, total, onIncrease, onDecrease, onDelete}) => {
+const ShoppingCart = ({items, total, onIncrease}) => {
   const renderItems = () => {
     return (items.map((item, idx) => {
       const {id, title, count, total} = item;
@@ -16,10 +17,10 @@ const ShoppingCart = ({items, total, onIncrease, onDecrease, onDelete}) => {
             <button type='button' className='inc' onClick={() => onIncrease(id)}>
               <i className="fas fa-plus-circle"></i>
             </button>
-            <button type='button' className='dec' onClick={() => onDecrease(id)}>
+            <button type='button' className='dec'>
               <i className="fas fa-minus-circle"></i>
             </button>
-            <button type='button' className='remove' onClick={() => onDelete(id)}>
+            <button type='button' className='remove' >
               <i className="fas fa-trash-alt"></i>
             </button>
           </td>
@@ -58,20 +59,9 @@ const mapStateToProps = ({cartItems, orderTotal}) => {
   return {items: cartItems, total: orderTotal}
 }
 
-const mapDispatchToProps = () => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    onIncrease: (id) => {
-      console.log(`increase ${id}`);
-
-    },
-    onDecrease: (id) => {
-      console.log(`decrease ${id}`);
-
-    },
-    onDelete: (id) => {
-      console.log(`delete ${id}`);
-
-    }
+    onIncrease: (id) =>dispatch(onIncrease(id)),
   }
 }
 
