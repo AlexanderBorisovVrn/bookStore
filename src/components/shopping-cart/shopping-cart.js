@@ -59,12 +59,10 @@ const mapStateToProps = ({cartItems, orderTotal}) => {
   return {items: cartItems, total: orderTotal}
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onIncrease: (id) =>dispatch(onIncrease(id)),
-    onDecrease: (id) =>dispatch(onDecrease(id)),
-    onRemove:(id)=>dispatch(onRemove(id))
-    }
+const mapDispatchToProps = {
+     onIncrease,
+    onDecrease,
+    onRemove
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShoppingCart)
