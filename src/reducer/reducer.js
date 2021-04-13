@@ -8,15 +8,11 @@ const initialState = {
 
 const getItem =(books,id,cartItems)=>{
   const bookId = id;
-  //Получим книгу,подходящую под искомый id
   const book = books
     .find(item => item.id === bookId);
-  //Проверим,что элемент повоторяется
   const itemIndex =cartItems
     .findIndex(({id}) => id === bookId);
-  //Получим повторяющийся элемент
   const item = cartItems[itemIndex];
-  //Конструктор нового элемента корзины
 }
 
 const reducer = (state = initialState, action) => {
@@ -65,7 +61,6 @@ const reducer = (state = initialState, action) => {
             total:total + Number(book.cost)
          }
       }
-      //Обновление корзины
       const updateCartItems = (cartItems, item, idx) => {
         if (idx === -1) {
           return [
