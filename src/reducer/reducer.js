@@ -1,19 +1,44 @@
 const initialState = {
-  books: [],
-  loading: true,
-  error: null,
-  cartItems: [],
-  orderTotal: 190
+  bookList: {
+    books: [],
+    loading: true,
+    error: null
+  },
+  shoppingCart: {
+    cartItems: [],
+    orderTotal: 190
+  }
 }
 
+const updateBookList = (state, action) => {
+  switch (action.type) {
+    case 'BOOKS_LOADED':
+      return {
+        books: action.payload,
+        loading: true,
+        error: null
+      };
+    case 'BOOKS_REQUESTED':
+       return {
+         books:[],
+         loading:true,
+         error:false
+       } 
+
+  }
+}
 const updateOrder = (state, id, quantity) => {
-  const {cartItems,books} = state;
+  const {
+    cartItems,
+    books
+  } = state;
   const bookId = id;
   //Получим книгу,подходящую под искомый id
-  const book =books
-    .find(item => item.id === bookId);
+  const book = books.find(item => item.id === bookId);
   //Проверим,что элемент повоторяется
-  const itemIndex = cartItems.findIndex(({id}) => id === bookId);
+  const itemIndex = cartItems.findIndex(({
+    id
+  }) => id === bookId);
   //Получим повторяющийся элемент
   const item = cartItems[itemIndex];
   //Конструктор нового элемента корзины
@@ -21,15 +46,15 @@ const updateOrder = (state, id, quantity) => {
   const addItem = (book, item = {}) => {
     const {
       id = book.id,
-      title = book.title,
-      total = 0,
-      count = 0
+        title = book.title,
+        total = 0,
+        count = 0
     } = item;
     return {
       id,
       title,
       count: count + quantity,
-      total: total + Number(book.cost)*quantity
+      total: total + Number(book.cost) * quantity
     }
   }
 
@@ -52,7 +77,7 @@ const updateOrder = (state, id, quantity) => {
       ...cartItems.slice(idx + 1)
     ]
   }
-  const newItem = addItem(book,item);
+  const newItem = addItem(book, item);
   return {
     ...state,
     cartItems: updateCartItems(state.cartItems, newItem, itemIndex)
@@ -65,33 +90,38 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         books: [],
-        loading: true,
-        error: null
+          loading: true,
+          error: null
       }
-    case 'BOOKS_LOADED':
-      return {
-        ...state,
-        books: action.payload,
-        loading: false,
-        error: null
-      };
-    case 'BOOKS_ERROR':
-      return {
-        ...state,
-        books: [],
-        loading: false,
-        error: action.payload
-      };
-    case 'ADDED_ITEM_TO_CART':
-      return updateOrder(state, action.payload, 1)
-    case 'INCREASE_ITEM_IN_CART':
-      return updateOrder(state, action.payload, 1);
-    case 'DECREASE_ITEM_IN_CART':
-      return updateOrder(state, action.payload,-1);
-    case 'REMOVE_ITEM_FROM_CART':
-
-    default:
-      return state;
+      case 'BOOKS_LOADED':
+        return {
+          ...state,
+          books: action.payload,
+            loading: false,
+            error: null
+        };
+      case 'BOOKS_ERROR':
+        return {
+          ...state,
+          books: [],
+            loading: false,
+            error: action.payload
+        };
+      case 'ADDED_ITEM_TO_CART':
+        return updateOrder(state, action.payload, 1);
+      case 'INCREASE_ITEM_IN_CART':
+        return updateOrder(state, action.payload, 1);
+      case 'DECREASE_ITEM_IN_CART':
+        return updateOrder(state, action.payload, -1);
+      case 'REMOVE_ITEM_FROM_CART':
+        const item = state
+          .cartItems
+          .find(({
+            id
+          }) => id === action.payload);
+        return updateOrder(state, action.payload, -item.count);
+      default:
+        return state;
   }
 }
 
