@@ -13,14 +13,14 @@ const addedItemToCart = (bookId)=>{
 }
 
 const onIncrease = (increaseId)=>{
-  return {type:'INCREASE_ITEM_IN_CART',payload:increaseId}
+  return {type:'ADD_ONE_ITEM_IN_CART',payload:increaseId}
 }
 const onDecrease = (decreaseId)=>{
-  return {type:'DECREASE_ITEM_IN_CART',payload:decreaseId}
+  return {type:'REMOVE_ITEM_FROM_CART',payload:decreaseId}
 }
 
 const onRemove = (removeId)=>{
-  return {type:'REMOVE_ITEM_FROM_CART',payload:removeId}
+  return {type:'ALL_REMOVE_FROM_CART',payload:removeId}
 }
 const fetchBooks = (dispatch,bookStoreService) =>{
   return ()=>{

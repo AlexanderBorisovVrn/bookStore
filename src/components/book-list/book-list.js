@@ -44,7 +44,7 @@ const BookListContainer = ({books, loading, error, fetchBooks,addedItemToCart}) 
 
 }
 
-const mapStateToProps = ({books, loading, error}) => {
+const mapStateToProps = ({bookList:{books, loading, error}}) => {
   return {books, loading, error}
 }
 
